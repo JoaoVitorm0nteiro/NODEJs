@@ -4,5 +4,5 @@ const nota = 5;
 if(nota>=7){
     console.log(chalk.green('Parabéns você está aprovado.'));
 }else{
-    console.log(chalk.bgRed.black('Você não foi aprovado.'));
+    console.log(chalk.bgCyanBright.bold('Você não foi aprovado.'));
 }
