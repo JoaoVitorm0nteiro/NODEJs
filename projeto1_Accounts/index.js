@@ -47,7 +47,7 @@ const buildaccount = () =>{
         const accountName = answer['accountName']
         console.info(accountName)
 
-        if(!fs.existsSync('account')){
+        if(!fs.existsSync('accounts')){
             fs.mkdirSync('accounts')
         }
 
