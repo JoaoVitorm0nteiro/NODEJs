@@ -24,7 +24,7 @@ const fs = require ('fs')
             createAccount();
             buildaccount();
         } else if(action === 'Depositar') {
-
+            deposito()
         } else if (action === 'Consultar Saldo'){
 
         } else if (action === 'Sacar'){
@@ -44,6 +44,7 @@ const createAccount = () =>{
     console.log(chalk.green('Defina as opções da sua conta a seguir'));
 }
 
+//build account
 const buildaccount = () =>{
     inquirer.prompt([
         {
@@ -79,5 +80,35 @@ const buildaccount = () =>{
     })
 }
 
+//função deposito
+function deposito(){
+
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Qual o nome da sua conta?'
+        }
+    ]).then((answer)=>{
+        const accountName = answer['accountName'];
+        //verifica se a conta existe        
+        if(!checkAccount(accountName)){
+            return deposito()
+        }
+
+    }).catch()
+}
+
+function checkAccount (accountName){
+
+    if(!fs.existsSync(`accounts/${accountName}.json`)){
+        console.log(chalk.bgRed.black('Esta conta não existe, digite um nome valido.'));    
+        return false
+    }
+    return true
+}
+
+
+
 
  operation();
+
