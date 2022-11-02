@@ -44,7 +44,7 @@ const media = () =>{
     }
     ]).then((notas)=>{
         const media = parseFloat((notas.media1 + notas.media2)/2)
-        console.log(`Sua média é: ${media}`);
+        console.log(chalk.bgGreen.green`Sua média é: ${media}`);
 
     }).catch((err)=>{
         console.log(err.message);
