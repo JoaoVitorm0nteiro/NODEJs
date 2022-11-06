@@ -5928,6 +5928,7 @@ let invalidos = [];
             invalidos.push(arrVGas[i]);
         }
         i++
+        
     }
 
 
