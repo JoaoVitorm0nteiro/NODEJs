@@ -36,12 +36,13 @@ const filtro = () => {
     }
 }
 
+filtro();
+
 if(verificador == true){
     i=0;
     j++;
     !verificador;
     filtro();
 }
-
 console.log(i);
 console.log(array);
