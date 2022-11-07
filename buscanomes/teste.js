@@ -1,6 +1,6 @@
 const fs = require ('fs')
 const Main = () => {
-    const nomesTeste1 = `
+    const arrayNomes = `
 joao vitor
 teste1
 teste2
@@ -12,7 +12,7 @@ teste8
 lucas
 davi
 `
-    const nomesTeste2 = `
+    const baseBusca = `
 teste1
 grazi
 teste2
@@ -22,8 +22,8 @@ joao vitor
 lucas
 davi
 `
-    const array1 = nomesTeste1.split('\n').filter(Boolean);
-    const array2 = nomesTeste2.split('\n').filter(Boolean);
+    const array1 = arrayNomes.split('\n').filter(Boolean);
+    const array2 = baseBusca.split('\n').filter(Boolean);
     
     let array = [];
     let j = 0;
