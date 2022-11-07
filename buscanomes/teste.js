@@ -22,8 +22,8 @@ joao vitor
 lucas
 davi
 `
-    const array1 = teste.split('\n').filter(Boolean);
-    const array2 = teste2.split('\n').filter(Boolean);
+    const array1 = nomesTeste1.split('\n').filter(Boolean);
+    const array2 = nomesTeste2.split('\n').filter(Boolean);
     
     let array = [];
     let j = 0;
