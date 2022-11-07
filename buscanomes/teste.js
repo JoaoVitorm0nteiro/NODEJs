@@ -1,6 +1,5 @@
-const fs = require ('fs')
-const Main = () => {
-    const arrayNomes = `
+    const fs = require('fs');
+    const StrNomes = `
 joao vitor
 teste1
 teste2
@@ -12,7 +11,7 @@ teste8
 lucas
 davi
 `
-    const listaFuncs = `
+    const StrlistaFuncs = `
 teste1
 grazi
 teste2
@@ -22,26 +21,20 @@ joao vitor
 lucas
 davi
 `
-    const array1 = arrayNomes.split('\n').filter(Boolean);
-    const array2 = listaFuncs.split('\n').filter(Boolean);
-    
-    let array = [];
-    let j = 0;
+    const arrayNomes = StrNomes.split('\n').filter(Boolean);
+    const arrayListaFuncs = StrlistaFuncs.split('\n').filter(Boolean);
 
-    const filtro = (i = 0) => {
-        while(i<array2.length){
-            if(array1[j] === array2[i]){
-                array.push(array2[i])
+    let nomes = '';
+    for(let j=0; j<arrayNomes.length; j++){
+        for(let i = 0; i<arrayListaFuncs.length; i++){
+            if(arrayNomes[j] === arrayListaFuncs[i]){
+                nomes += ("\n" + arrayListaFuncs[i])
+                break;
             }
-            i++;
-        }
-        if(j<array1.length){
-            j++
-            filtro()
         }
     }
-    filtro();
-    nomes = array.toString();
-    fs.writeFileSync('Nomes.txt', nomes.replaceAll(',','\n'));
-}
-Main();
+fs.writeFile('nomes.txt', nomes, (err)=>{
+    if (err) {
+        console.log(err);
+    }
+});
