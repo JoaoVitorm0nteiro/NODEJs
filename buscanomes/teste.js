@@ -1,10 +1,17 @@
+const fs = require ('fs')
+
+const Main = () => {
 const teste = `
 joao vitor
 teste1
 teste2
 teste3
-testa4
+teste4
 grazi
+teste5
+teste8
+lucas
+davi
 `
 const teste2 = `
 teste1
@@ -13,36 +20,30 @@ teste2
 teste3
 teste4
 joao vitor
-teste5
-
+lucas
+davi
 `
-let i = 0;
-let j = 0;
-let verificador = false;
-
-let array = [];
-
+//convertendo as strings para array
 const array1 = teste.split('\n').filter(Boolean);
 const array2 = teste2.split('\n').filter(Boolean);
 
-const filtro = () => {
+let array = [];
+let j = 0;
+
+const filtro = (i = 0) => {
     while(i<array2.length){
         if(array1[j] === array2[i]){
             array.push(array2[i])
-            !verificador;
-            break;
         }
         i++;
     }
+    if(j<array1.length){
+        j++
+        filtro()
+    }
 }
-
 filtro();
-
-if(verificador == true){
-    i=0;
-    j++;
-    !verificador;
-    filtro();
+fs.writeFileSync('Nomes.txt', array.toString());
 }
-console.log(i);
-console.log(array);
+
+Main();
