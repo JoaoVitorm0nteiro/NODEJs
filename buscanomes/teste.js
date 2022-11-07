@@ -12,7 +12,7 @@ teste8
 lucas
 davi
 `
-    const baseBusca = `
+    const listaFuncs = `
 teste1
 grazi
 teste2
@@ -23,7 +23,7 @@ lucas
 davi
 `
     const array1 = arrayNomes.split('\n').filter(Boolean);
-    const array2 = baseBusca.split('\n').filter(Boolean);
+    const array2 = listaFuncs.split('\n').filter(Boolean);
     
     let array = [];
     let j = 0;
