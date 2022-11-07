@@ -1,4 +1,4 @@
-const funcionarios = 
+const funcionariosPrefeitura = 
 `
 ABDIEL DE CASTRO LIMA RIBEIRO
 ABELARDO GOMES ALMEIDA
@@ -4031,9 +4031,8 @@ YTALO SILVA LEMOS
 YVANA GOMES ANSELMO
 ZELMA DE ALMEIDA PEREIRA
 ZILCILENE DE MOURA GOMES
-
 `
-const nomes = 
+const nomesVgas = 
 `
 ABIQUEILHA MOREIRA DA SILVA
 ABIUDE SOARES DE SOUSA
@@ -5916,19 +5915,24 @@ ZILDA ALVES DE LIMA
 ZUILA FERREIRA GARCIA
 ZULEIDE DE OLIVEIRA SILVA
 `
-const arrFuncs = funcionarios.split('\n').filter(Boolean);
-const arrVGas = nomes.split('\n').filter(Boolean);
-
-let i = 0;
-let contador = 0;
+const arrFuncs = funcionariosPrefeitura.split('\n').filter(Boolean);
+const arrVGas = nomesVgas.split('\n').filter(Boolean);
 let invalidos = [];
+let j = 0;
 
-    while (i < arrVGas.length){
-        if (arrFuncs === arrVGas[i]){
-            invalidos.push(arrVGas[i]);
+const filtro = (i = 0) => {
+    while(i<arrVGas.length){
+        if(arrFuncs[j] === arrVGas[i]){
+            invalidos.push(arrVGas[i])
         }
-        i++
-        
+            i++;
     }
-
+    if(j<arrFuncs.length){
+        j++
+        filtro()
+    }
+        
+}
+filtro();
+console.log(invalidos);
 
