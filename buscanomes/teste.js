@@ -21,5 +21,4 @@ fs.writeFile('nomes.txt', nomes, (err)=>{
     else{
         console.log('Arquivo gerado com sucesso !');
     }
-    
 });
