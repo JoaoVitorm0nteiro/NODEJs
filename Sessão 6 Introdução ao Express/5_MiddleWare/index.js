@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { toUSVString } = require('util');
 
 const app = express();
 const basepath = path.join(__dirname, 'template');
@@ -8,21 +7,22 @@ const port = 3000;
 
 //simulando autenticação
 const checkauth = function(req, res, next){
-    req.authStatus = true;
+    req.authStatus = false;
     
     if(req.authStatus){
         console.log('Está logado, pode continuar.');
         next();
+        //se req.authStatus = true proxima para a proxima função
 
     }else{
         res.sendFile(`${basepath}/notauthorized.html`)
         console.log('Não está logado, faça o login para continuar');
-        next();
+        //next();
+        //se req.authStatus = false
     }
 
 }
-
-app.use(checkauth)
+app.use(checkauth) //chamada da função
 
 app.get('/', (req, res)=>{
     res.sendFile(`${basepath}/index.html`)
