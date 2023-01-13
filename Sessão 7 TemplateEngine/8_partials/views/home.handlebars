@@ -1,0 +1,15 @@
+<h1>Painel do usuario</h1>
+<p>Nome do usuario: {{user.name}}</p> <br>
+<p>Sobrenome: {{user.surname}}</p> <br>
+<p>Idade: {{user.age}}</p>
+<p>Curso: {{user.course}}</p>
+
+<a href="/post">Clique aqui para acessar o blogspot </a>
+
+{{#if auth}}
+<p>Autenticado <a href="/dashboard">Clique aqui para ir para o dashboard.</a></p>
+{{else}}
+<p>Faça <a href="">login</a> para acessar a DashBoard</p>
+{{/if}}
+
+
