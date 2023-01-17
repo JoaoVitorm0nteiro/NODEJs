@@ -26,7 +26,9 @@ conn.connect((err) => {
         console.log(err);
     }
 
-    console.log('conectado');
+    console.log('Conexão estabelecida com sucesso.');
 
-    app.listen(port)
+    app.listen(port, ()=>{
+        console.log(`serviço executando na porta: ${port}`);
+    })
 })
