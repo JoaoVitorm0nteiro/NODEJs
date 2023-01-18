@@ -24,9 +24,9 @@ app.get('/', (req,res)=>{
 
 app.post('/books/insertbook', (req, res)=>{
     const title = req.body.title;
-    const pageqty = req.body.pageqty;
+    const Autor = req.body.Autor;
 
-    const query = `INSERT INTO Livros (title, pageqty) VALUES ('${title}', '${pageqty}');`
+    const query = `INSERT INTO Livros (Título, Autor) VALUES ('${title}', '${Autor}');`
 
     conn.query(query, function (err){
         if (err){
