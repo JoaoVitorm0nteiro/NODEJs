@@ -44,12 +44,12 @@ app.get('/estante',(req,res)=>{
     conn.query(QUERY, function(err, data){
         if(err){
             console.log(err);
-            return;
-        }
+            return
+        }   
             const books = data
             console.log(books);
+            res.render('estante', { books })
     })
-    res.render('estante')
 })
 
 const conn = mysql.createConnection({
