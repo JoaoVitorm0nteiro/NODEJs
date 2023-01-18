@@ -1,3 +1,5 @@
+//tentativa de criar uma table em um bd sem digitar no workbench
+
 const mysql = require('mysql')
 
 const conn = mysql.createConnection({
