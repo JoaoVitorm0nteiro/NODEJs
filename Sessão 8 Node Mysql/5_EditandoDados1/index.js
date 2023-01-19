@@ -38,7 +38,7 @@ app.post('/books/insertbook', (req, res)=>{
 
 })
 
-app.get('/estante',(req,res)=>{
+app.get('/estante', (req,res)=>{
     const QUERY = 'SELECT * FROM Livros;'
 
     conn.query(QUERY, function(err, data){
@@ -51,6 +51,22 @@ app.get('/estante',(req,res)=>{
             res.render('estante', { books })
     })
 })
+
+    app.get('/books/edit/:id', (req,res)=>{
+    
+    const id = req.params.id
+    
+    const sql = `SELECT * FROM Livros WHERE id = ${id}`
+    conn.query(sql, (err,data)=>{
+        if(err){
+            console.log(err);
+        }
+            const book = data[0];
+
+            res.render('editbook', { book })
+    })
+}) 
+
 
 const conn = mysql.createConnection({
     host: 'localhost',
