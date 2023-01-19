@@ -52,7 +52,7 @@ app.get('/estante', (req,res)=>{
     })
 })
 
-    app.get('/books/edit/:id', (req,res)=>{
+    app.get('/estante/edit/:id', (req,res)=>{
     
     const id = req.params.id
     
@@ -67,6 +67,26 @@ app.get('/estante', (req,res)=>{
     })
 }) 
 
+
+app.post('/book/updatebook', (req,res)=>{
+    const id = req.body.id;
+    const title = req.body.title;
+    const Autor = req.body.Autor;
+
+    const sql = `UPDATE Livros SET Título = '${title}', Autor = '${Autor}' WHERE id = ${id}`
+    
+    conn.query(sql, (err)=>{
+        if(err){
+            console.log(err);
+            return
+        }else{
+            console.log("Alteração bem sucedida.");
+            res.redirect('/estante')
+        }
+
+    })
+
+})
 
 const conn = mysql.createConnection({
     host: 'localhost',
