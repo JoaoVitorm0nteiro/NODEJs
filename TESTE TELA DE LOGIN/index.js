@@ -1,8 +1,10 @@
 const express = require ('express');
 const exphbs = require ('express-handlebars');
-const mysql = require ('mysql');
-const port = 3000;
 
+//conexão com o banco de dados, ta separado do arquivo original
+const conn = require ('./bdconnect');
+
+const port = 3000;
 const app = express();
 
 //ler o body
@@ -11,7 +13,6 @@ app.use(
         extended: true,
     }),
 )
-
 app.use(express.json()) ;
 
 //iniciando o handlebars (?)
@@ -23,6 +24,7 @@ app.get('/', (req,res)=>{
     res.render('home');
 })
 
+//cadastro de usuario
 app.post('/cadastro/users', (req,res)=>{
     const email = req.body.email;
     const senha = req.body.password;
@@ -39,21 +41,17 @@ app.post('/cadastro/users', (req,res)=>{
 
 })
 
-const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'logintest',
-});
-
 conn.connect((err) => {
     if(err){
         console.log(err);
-    }
-
-    console.log('Conexão estabelecida com sucesso.');
-
-        app.listen(port, ()=>{
-        console.log(`serviço executando na porta: ${port}`);
-    }) 
+    }else{
+        console.log('Conectado.');
+    }      
 })
+
+app.listen(port, ()=>{
+    console.log(`serviço executando na porta: ${port}`);
+}) 
+
+
+
