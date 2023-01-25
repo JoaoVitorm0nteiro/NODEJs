@@ -15,6 +15,8 @@ app.use(
 )
 app.use(express.json()) ;
 
+app.use(express.static('public'));
+
 //iniciando o handlebars (?)
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
