@@ -48,6 +48,25 @@ app.post('/add/users', (req,res)=>{
 
 })
 
+app.get('/users', (req,res)=>{
+    const query = `SELECT nome, user_name FROM usuarios`
+    conn.query(query, function(err, data){
+        if(err){
+            console.log(err);
+            return
+        }
+        const users = data;
+        console.log(users);
+        res.render('users', { users })
+    })
+})
+
+app.post('/users/delete', (req,res)=>{
+    
+
+    console.log(`usuario deletado`);
+})
+
 
 
 app.listen(port, ()=>{
