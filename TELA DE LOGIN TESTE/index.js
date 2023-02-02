@@ -22,6 +22,34 @@ app.get('/', (req,res)=>{
     res.render('login')
 })
 
+//add um post aqui para efetuar o login
+
+
+app.get('/cadaster', (req,res)=>{
+    res.render('add_users')
+})
+
+app.post('/add/users', (req,res)=>{
+
+    const name = req.body.name;
+    const user = req.body.user;
+    const password = req.body.password;
+
+    const query = `INSERT INTO usuarios (nome, user_name, senha) VALUES ('${name}', '${user}', '${password}');`
+
+    conn.query(query, function (err) {
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Dados gravados com sucesso");
+            res.redirect('/')
+        }
+    })
+
+})
+
+
+
 app.listen(port, ()=>{
     console.log(`Serviço executando na porta: ${port}`);
 })
@@ -31,8 +59,8 @@ app.listen(port, ()=>{
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'logintest',
+    password: 'teste',
+    database: 'loginteste',
 })
 
 conn.connect((err) => {
