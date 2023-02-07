@@ -3,10 +3,13 @@
         <h1>LISTA DE USUARIOS CADASTRADOS</h1>
         {{#each users}}
         <div>
-           Nome: {{this.id}} <span class="bold">{{this.nome}}</span> || usuario: {{this.user_name}} <a href="">Deletar Usuario</a>
+            <hr>
+           #{{this.id}} <span class="bold">{{this.nome}}</span> || usuario: {{this.user_name}} <a href="">Deletar Usuario</a>
         </div>
         {{/each}}
-
-
+               
+               <div class="form-control">
+                <button><a href="/">Voltar</a></button>
+               </div>
     </div>
 </div>

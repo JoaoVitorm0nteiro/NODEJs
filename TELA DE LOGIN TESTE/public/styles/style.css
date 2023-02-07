@@ -17,6 +17,11 @@ div.box{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+div.form-control{
+    padding-top: 5px;
 }
 
 
