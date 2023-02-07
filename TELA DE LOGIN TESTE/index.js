@@ -18,17 +18,36 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
+//render da pagina inicial
 app.get('/', (req,res)=>{
     res.render('login')
 })
 
-//add um post aqui para efetuar o login
+//post LOGIN
+app.post('/log', (req, res)=>{
 
+    const user = req.body.user;
+    const password = req.body.password;
 
+    const query = `SELECT * FROM usuarios WHERE user_name = '${user}' AND senha = '${password}'   ;`
+
+    conn.query(query, function(err, data){
+        if(data.length>0){
+            console.log('Usuario Logado');
+            res.render('logado')
+        }else{
+            console.log('Usuario nao registrado');
+        }
+    })
+
+})
+
+//render tela de cadastro
 app.get('/cadaster', (req,res)=>{
     res.render('add_users')
 })
 
+//post cadastro de usuarios
 app.post('/add/users', (req,res)=>{
 
     const name = req.body.name;
@@ -48,6 +67,7 @@ app.post('/add/users', (req,res)=>{
 
 })
 
+//render usuarios cadastrados
 app.get('/users', (req,res)=>{
     const query = `SELECT nome, user_name FROM usuarios`
     conn.query(query, function(err, data){
@@ -61,6 +81,7 @@ app.get('/users', (req,res)=>{
     })
 })
 
+//delete usuarios cadastrados
 app.post('/users/delete', (req,res)=>{
     
 
