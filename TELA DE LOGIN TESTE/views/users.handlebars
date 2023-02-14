@@ -4,7 +4,7 @@
         {{#each users}}
         <div>
             <hr>
-           #{{this.id}} <span class="bold">{{this.nome}}</span> || usuario: {{this.user_name}} <a href="">Deletar Usuario</a>
+           # <span class="bold">{{this.nome}}</span> || usuario: {{this.user_name}} <form action="/users/delete/{{this.id}}" method="post"><input type="submit" value="Remover"></form>
         </div>
         {{/each}}
                

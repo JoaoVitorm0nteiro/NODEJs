@@ -37,6 +37,7 @@ app.post('/log', (req, res)=>{
             res.render('logado')
         }else{
             console.log('Usuario nao registrado');
+            res.render('wrongpass')
         }
     })
 
@@ -69,23 +70,33 @@ app.post('/add/users', (req,res)=>{
 
 //render usuarios cadastrados
 app.get('/users', (req,res)=>{
-    const query = `SELECT nome, user_name FROM usuarios`
+    const query = `SELECT id, nome, user_name FROM usuarios`
     conn.query(query, function(err, data){
         if(err){
             console.log(err);
             return
         }
         const users = data;
-        console.log(users);
         res.render('users', { users })
     })
 })
 
 //delete usuarios cadastrados
-app.post('/users/delete', (req,res)=>{
-    
+app.post('/users/delete/:id', (req,res)=>{
+    const id = req.params.id;
+    const query = `DELETE FROM usuarios WHERE id = ${id}`
 
-    console.log(`usuario deletado`);
+    conn.query(query, function(err){
+        if(err){
+            console.log(err);
+            return
+        }else{
+            console.log('Usuario removido com sucesso');
+            res.redirect('/users')
+        }
+        
+    })
+
 })
 
 
