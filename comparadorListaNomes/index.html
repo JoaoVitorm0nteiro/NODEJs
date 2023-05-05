@@ -43,8 +43,8 @@ btn.addEventListener('click', ()=>{
     let lista1 = document.querySelector('#lista1')
     let lista2 = document.querySelector('#lista2')
 
-    let nomesPesquisar = lista1.value;
-    let listadeNomes = lista2.value
+    let listadeNomes = lista1.value;
+    let nomesPesquisar= lista2.value
 
     let arrayNPesquisar = nomesPesquisar.split('\n').filter(Boolean);
     let BaseBusca = listadeNomes.split('\n').filter(Boolean);
@@ -57,7 +57,6 @@ btn.addEventListener('click', ()=>{
                 break;
             }
         }
-        
     }
 
     window.alert(ocorrencias);
